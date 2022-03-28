@@ -1,9 +1,7 @@
 #include <cstring>
 #include <string>
 #include <iostream>
-#include <istream>
 #include <fstream>
-#include <ostream>
 
 #include "SHA1.hpp"
 #include "SHA1.cpp"
@@ -11,9 +9,11 @@
 using namespace std;
 
 int block_no;
+string block_number;
+
 const string path = "./blockchain/";
 
-int hash_verify(int block_NO) {
+void hash_verify(int block_NO) {
     if (block_NO == 0) {
         cout << "No Prev-Block" << endl;
     } else {
@@ -53,7 +53,7 @@ void block_info(string block_number) {
     }
 }
 
-int block_index(int index) {
+void block_index(int index) {
     ofstream index_file;
     index_file.open("index.txt");
     index_file << index + 1 << endl;
@@ -105,26 +105,44 @@ void add_block() {
 
 }
 
-
-int main() {
-    int choose;
-    string block_number;
-    cout << "--- Welcome to Blockchain ---" << endl << endl;
-    cout << "1. Check Blockchain Information" << endl << "2. Add A New Block into Blockchain" << endl << "3. Auto Blockchain Verify" << endl << "4. Exit" << endl;
-    cout << "Choose One: ";
-    cin >> choose;
-    cout << endl;
-
-
+void menu(int choose) {
     if (choose == 1) {
         cout << "Which Block want to look? - ";
         cin >> block_number;
         block_info(block_number);
 
+        cout << endl << "Want to choose or exit? - (y for yes, n for no) ";
+        string yn;
+        cin >> yn;
+        if (yn == "y") {
+            cout << endl;
+            cout << "1. Check Blockchain Information" << endl << "2. Add A New Block into Blockchain" << endl << "3. Auto Blockchain Verify" << endl << "4. Exit" << endl;
+            cout << "Choose One: ";
+            cin >> choose;
+            cout << endl;
+            menu(choose);
+        } else if (yn == "n") {
+            cout << endl << "Blockchain Exit..." << endl;
+        }
+
     } else if (choose == 2) {
         getchar();
         add_block();
-    
+
+        cout << endl << "Want to choose or exit? - (y for yes, n for no) ";
+        string yn;
+        cin >> yn;
+        if (yn == "y") {
+            cout << endl;
+            cout << "1. Check Blockchain Information" << endl << "2. Add A New Block into Blockchain" << endl << "3. Auto Blockchain Verify" << endl << "4. Exit" << endl;
+            cout << "Choose One: ";
+            cin >> choose;
+            cout << endl;
+            menu(choose);
+        } else if (yn == "n") {
+            cout << endl << "Blockchain Exit..." << endl;
+        }
+        
     } else if (choose == 3) {
         string index;
         ifstream index_file("index.txt");
@@ -134,14 +152,44 @@ int main() {
         int block_num = block_no - 1;
         hash_verify(block_num);
 
+        cout << endl << "Want to choose or exit? - (y for yes, n for no) ";
+        string yn;
+        cin >> yn;
+        if (yn == "y") {
+            cout << endl;
+            cout << "1. Check Blockchain Information" << endl << "2. Add A New Block into Blockchain" << endl << "3. Auto Blockchain Verify" << endl << "4. Exit" << endl;
+            cout << "Choose One: ";
+            cin >> choose;
+            cout << endl;
+            menu(choose);
+        } else if (yn == "n") {
+            cout << endl << "Blockchain Exit..." << endl;
+        }
+
     } else if (choose == 4) {
-        cout << "Bye Bye" << endl;
+        cout << "Blockchain Exit..." << endl;
+    }
+
+}
+
+
+int main() {
+    int choose;
+    cout << "--- Welcome to Blockchain ---" << endl << endl;
+    cout << "1. Check Blockchain Information" << endl << "2. Add A New Block into Blockchain" << endl << "3. Auto Blockchain Verify" << endl << "4. Exit" << endl;
+    cout << "Choose One: ";
+    cin >> choose;
+    cout << endl;
+
+
+    if (choose == 1 || choose == 2 || choose == 3 || choose == 4) {
+        menu(choose);
 
     } else {
-        cout << "Error" << endl;
+        cout << "Error!!! Please choose again: ";
+        cin >> choose;
+        menu(choose);
     }
-    
-
 
     return 0;
 }
