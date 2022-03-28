@@ -8,12 +8,14 @@
 - Add New Block & Storage Data
 - Look the Block Information
 - Verify the Block (Change or not)
+- Timestamp
 
 ## Library Use:
 - cstring
 - string
 - iostream
 - fstream
+- ctime
 - SHA1.hpp (already in there)
 - SHA1.cpp (already in there)
 
