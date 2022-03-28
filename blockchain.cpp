@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include <ctime>
 #include "SHA1.hpp"
 #include "SHA1.cpp"
 
@@ -26,6 +26,8 @@ void hash_verify(int block_NO) {
 
         string this_Block_prev_hash;
         ifstream blockFile(path + "block_" + to_string(block_NO) + ".txt");
+        blockFile.ignore(50, '\n');
+        blockFile.ignore(50, '\n');
         blockFile.ignore(50, '\n');
         blockFile.ignore(50, '\n');
         blockFile.ignore(50, '\n');
@@ -83,12 +85,17 @@ void add_block() {
         block_no = 0;
     }
 
-
     ofstream block_file;
     block_file.open(path + "block_" + to_string(block_no) + ".txt");
     block_file << "Block Number: " << block_no << endl;
     block_file << "hash: " << hash << endl;
     block_file << "data: " << data << endl;
+    char* dt;
+    time_t now = time(0);
+    tm *gmtm = gmtime(&now);
+    dt = asctime(gmtm);
+    block_file << "Timestamp (UTC): "<< dt << endl;
+
     if (block_no == 0) {
         block_file << "prev hash: NULL" << endl;
     } else {
