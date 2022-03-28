@@ -1,0 +1,4 @@
+Block Number: 0
+hash: 64e4da4ac924641352912822536627431754af87
+data: block 0
+prev hash: NULL
