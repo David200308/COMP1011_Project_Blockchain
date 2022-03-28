@@ -8,7 +8,7 @@
 - Add New Block & Storage Data
 - Look the Block Information
 - Verify the Block (Change or not)
-- Timestamp
+- Timestamp (UTC)
 
 ## Library Use:
 - cstring
