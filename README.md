@@ -5,9 +5,9 @@
 ---
 
 ## Function:
-- Add New Block, and storage data
+- Add New Block & Storage Data
 - Look the Block Information
-- Verify the Block (Change or nor)
+- Verify the Block (Change or not)
 
 ## Library Use:
 - cstring
