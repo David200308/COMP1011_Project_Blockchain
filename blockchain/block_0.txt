@@ -1,4 +1,6 @@
 Block Number: 0
-hash: 64e4da4ac924641352912822536627431754af87
-data: block 0
+hash: 241fbecec85f48a0211728d371ea88609ad06ecf
+data: I am David
+Timestamp (UTC): Mon Mar 28 16:00:19 2022
+
 prev hash: NULL

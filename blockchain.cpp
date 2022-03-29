@@ -112,9 +112,24 @@ void add_block() {
 
 }
 
+void look(int block_num) {
+    for (block_num; block_num >= 0; block_num--){
+        cout << " <-- Block [" << block_num << "] ";
+    }
+    
+}
+
 void menu(int choose) {
     if (choose == 1) {
-        cout << "Which Block want to look? - ";
+        int block_num;
+        string index;
+        ifstream index_file("index.txt");
+        getline(index_file, index);
+        block_num = stoi(index) - 1;
+
+        look(block_num);
+
+        cout << endl << endl << "Which Block want to look? - ";
         cin >> block_number;
         block_info(block_number);
 
