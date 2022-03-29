@@ -9,6 +9,7 @@
 - Look the Block Information
 - Verify the Block (Change or not)
 - Timestamp (UTC)
+- Visualize Blockchain
 
 ## Library Use:
 - cstring
