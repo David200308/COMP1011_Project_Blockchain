@@ -10,6 +10,8 @@ using namespace std;
 
 int block_no;
 string block_number;
+int check_0;
+int check_1;
 
 const string path = "./blockchain/";
 
@@ -39,10 +41,13 @@ void hash_verify(int block_NO) {
         } else {
             cout << "The Blockchain was been changed!!! Please Check it!!!" << endl;
             cout << "Block " << block_NO - 1 << " has been changed" << endl << endl;
+            return;
         }
 
         cout << "check prev one" << endl;
         hash_verify(block_NO - 1);
+
+
     }
     
 }
