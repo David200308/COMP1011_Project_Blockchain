@@ -50,9 +50,12 @@ void hash_verify(int block_NO) {
 void block_info(string block_number) {
     string block_information;
     ifstream blockFile(path + "block_" + block_number + ".txt");
+    cout << endl << "-----------------------------------------------------" << endl;
     while (getline(blockFile, block_information)) {
         cout << block_information << endl;
     }
+    cout << "-----------------------------------------------------" << endl;
+
 }
 
 void block_index(int index) {
