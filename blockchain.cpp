@@ -72,12 +72,17 @@ void block_index(int index) {
 
 
 void add_block() {
+    
     string data;
     cout << "Enter data into Blockchain: " << endl;
     getline(cin, data);
+    char* dt;
+    time_t now = time(0);
+    tm *gmtm = gmtime(&now);
+    dt = asctime(gmtm);
 
     SHA1 checksum;
-	checksum.update(data);
+	checksum.update(data + dt);
 	char hash[41];
 	strcpy(hash, checksum.final().c_str());
 
@@ -97,10 +102,7 @@ void add_block() {
     block_file << "Block Number: " << block_no << endl;
     block_file << "hash: " << hash << endl;
     block_file << "data: " << data << endl;
-    char* dt;
-    time_t now = time(0);
-    tm *gmtm = gmtime(&now);
-    dt = asctime(gmtm);
+
     block_file << "Timestamp (UTC): "<< dt << endl;
 
     if (block_no == 0) {
