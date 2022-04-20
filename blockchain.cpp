@@ -1,5 +1,4 @@
 #include <cstring>
-#include <string>
 #include <iostream>
 #include <fstream>
 #include <ctime>
@@ -205,7 +204,7 @@ void menu(int choose) {
 
 int main() {
     int choose;
-    cout << "--- Welcome to Blockchain ---" << endl << endl;
+    cout << "--- Welcome to Blockchain (Guanlin Jiang Made it)---" << endl << endl;
     cout << "1. Check Blockchain Information" << endl << "2. Add A New Block into Blockchain" << endl << "3. Auto Blockchain Verify" << endl << "4. Exit" << endl;
     cout << "Choose One: ";
     cin >> choose;
