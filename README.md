@@ -13,7 +13,6 @@
 
 ## Library Use:
 - cstring
-- string
 - iostream
 - fstream
 - ctime
